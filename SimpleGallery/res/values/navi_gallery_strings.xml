@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="normal_preview_description">Normal preview</string>
+    <string name="floating_preview_description">Floating preview</string>
+    <string name="image_full_view_description">Image full view</string>
+
+    <string name="left_limit">To the left bound!</string>
+    <string name="right_limit">To the right bound!</string>
+    <string name="top_limit">To the top bound!</string>
+    <string name="bottom_limit">To the bottom bound!</string>
+
+    <string name="menu_cloumns_2">2 columns</string>
+    <string name="menu_cloumns_3">3 columns</string>
+    <string name="menu_cloumns_4">4 columns</string>
+    <string name="menu_cloumns_5">5 columns</string>
+</resources>

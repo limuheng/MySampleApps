@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/firebrick" />
+    <stroke android:width="@dimen/img_preview_border" android:color="@color/firebrick" />
+    <padding
+        android:left="@dimen/img_preview_border" android:top="@dimen/img_preview_border"
+        android:right="@dimen/img_preview_border" android:bottom="@dimen/img_preview_border" />
+</shape>

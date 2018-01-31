@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">LanguageSelectionApp</string>
+    <string name="menu_language">Languages</string>
+    <string name="select_language">Select language</string>
+    <string name="demo_string">Hello! Try to change app language from option menu.</string>
+</resources>

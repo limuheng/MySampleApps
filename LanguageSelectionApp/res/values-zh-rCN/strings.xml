@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">语言选择范例应用程序</string>
+    <string name="menu_language">语言</string>
+    <string name="select_language">选择语言</string>
+    <string name="demo_string">哈啰！请尝试从选单中切换应用程序语言</string>
+</resources>

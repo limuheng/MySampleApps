@@ -1,0 +1,27 @@
+<resources>
+
+    <string name="app_name">AdaptiveViewPager</string>
+
+    <string name="page1">page1</string>
+    <string name="page2">page2</string>
+    <string name="page3">page3</string>
+    <string name="page4">page4</string>
+    <string name="page5">page5</string>
+
+    <string name="item1">item1</string>
+    <string name="item2">item2</string>
+    <string name="item3">item3</string>
+    <string name="item4">item4</string>
+    <string name="item5">item5</string>
+    <string name="no_data">No data</string>
+
+    <string-array name="items" translatable="false">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+    </string-array>
+
+    <string name="page_setting">Page Setting</string>
+</resources>

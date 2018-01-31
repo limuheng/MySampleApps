@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="image_item_width">100dp</dimen>
+    <dimen name="image_item_height">100dp</dimen>
+    <dimen name="floating_image_width">300dp</dimen>
+    <dimen name="floating_image_height">300dp</dimen>
+    <dimen name="grid_spacing">6dp</dimen>
+    <dimen name="img_preview_border">3dp</dimen>
+</resources>

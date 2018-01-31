@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dlg_width"
+    android:layout_height="@dimen/dlg_height"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:scrollbars="none"
+        android:divider="#00000000"
+        android:layout_marginBottom="@dimen/listview_margin_v"
+        android:layout_marginStart="@dimen/listview_slim_margin_v"
+        android:layout_marginEnd="@dimen/listview_slim_margin_h" />
+
+</LinearLayout>
