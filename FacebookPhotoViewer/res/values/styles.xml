@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- App theme with actionbar -->
+    <!-- <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar"/> -->
+
+    <!-- AppCompat Theme with actionbar -->
+    <!--
+    <style name="AppCompatTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@color/colorBackGround</item>
+    </style>
+    -->
+
+    <!-- Base application theme with material design -->
+    <!-- AppCompat Theme without actionbar -->
+    <style name="MaterialTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary color -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- Status bar background color -->
+        <item name="colorPrimaryDark">@color/windowBackGroundDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- other control items: colorControlNormal, colorControlActivated, colorControlHighlight, colorSwitchThumbNormal -->
+        <item name="android:windowBackground">@color/windowBackGround</item>
+        <item name="actionMenuTextColor">@color/white</item>
+    </style>
+
+    <style name="CustomAppTheme" parent="MaterialTheme.Base">
+    </style>
+</resources>

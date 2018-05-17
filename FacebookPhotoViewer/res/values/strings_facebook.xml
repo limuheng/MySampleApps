@@ -1,0 +1,11 @@
+<resources>
+    <string name="facebook_app_id">269669466469131</string>
+    <string name="fb_login_protocol_scheme">fb269669466469131</string>
+
+    <string name="success">SUCCESS</string>
+    <string name="cancel">CANCEL</string>
+    <string name="error">ERROR</string>
+
+    <string name="login">Continue with Facebook</string>
+    <string name="logout">Logout</string>
+</resources>

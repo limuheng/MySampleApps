@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Facebook Album Browser</string>
+
+    <string name="login_message">Please login your facebook account to continue...</string>
+    <string name="log_out">Log out</string>
+
+    <string name="no_data">There are no data for this user</string>
+</resources>
