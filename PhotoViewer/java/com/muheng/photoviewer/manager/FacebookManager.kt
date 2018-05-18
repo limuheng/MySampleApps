@@ -1,4 +1,4 @@
-package com.muheng.photoviewer.utils
+package com.muheng.photoviewer.manager
 
 import android.os.Bundle
 import android.os.Handler
@@ -7,6 +7,7 @@ import com.facebook.AccessTokenTracker
 import com.facebook.GraphRequest
 import com.facebook.login.LoginManager
 import com.muheng.facebook.MeProfile
+import com.muheng.photoviewer.utils.Constants
 import org.json.JSONObject
 
 class FacebookManager private constructor() {

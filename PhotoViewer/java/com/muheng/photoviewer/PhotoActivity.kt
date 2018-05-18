@@ -2,6 +2,8 @@ package com.muheng.photoviewer
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.muheng.photoviewer.fragment.FacebookFragment
+import com.muheng.photoviewer.fragment.PhotoFragment
 
 class PhotoActivity : AppCompatActivity() {
     var mFragment : FacebookFragment? = null

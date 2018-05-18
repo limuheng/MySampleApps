@@ -1,8 +1,9 @@
-package com.muheng.photoviewer
+package com.muheng.photoviewer.fragment
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Message
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
@@ -14,10 +15,12 @@ import android.widget.Toast
 import com.facebook.GraphRequest
 import com.facebook.GraphResponse
 import com.muheng.facebook.Photo
+import com.muheng.photoviewer.R
+import com.muheng.photoviewer.adapter.PhotosAdapter
 import com.muheng.photoviewer.utils.Constants
-import com.muheng.photoviewer.utils.FacebookManager
-import com.muheng.photoviewer.utils.PhotosManager
-import com.muheng.photoviewer.utils.PhotoManager.ICallback
+import com.muheng.photoviewer.manager.FacebookManager
+import com.muheng.photoviewer.manager.PhotosManager
+import com.muheng.photoviewer.manager.PhotoManager.ICallback
 import com.muheng.photoviewer.utils.UIHandler
 
 class AlbumPhotosFragment : FacebookFragment(), ICallback<Photo> {
@@ -29,10 +32,16 @@ class AlbumPhotosFragment : FacebookFragment(), ICallback<Photo> {
     private var mPhotosCallback = object : GraphRequest.Callback {
         override fun onCompleted(response: GraphResponse?) {
             Log.d("mPhotosCallback", "response: " + response?.jsonObject?.toString())
-            var photos = response?.jsonObject?.getJSONObject(Constants.PHOTOS)
-            var list = PhotosManager.getInstance()?.parsingData(photos, mHandler)
-            PhotosManager.getInstance()?.appendData(list)
-            mHandler?.sendEmptyMessage(Constants.MSG_LOAD_NEXT_DONE)
+            if (response?.jsonObject?.has(Constants.NAME) == true) {
+                PhotosManager.getInstance()?.mAlbumName = response.jsonObject?.getString(Constants.NAME)
+                updateTitle()
+            }
+            if (response?.jsonObject?.has(Constants.PHOTOS) == true) {
+                var photos = response.jsonObject?.getJSONObject(Constants.PHOTOS)
+                var list = PhotosManager.getInstance()?.parsingData(photos, mHandler)
+                PhotosManager.getInstance()?.appendData(list)
+            }
+            mHandler?.sendEmptyMessage(Constants.MSG_LOADING_DONE)
             mHandler?.sendEmptyMessage(Constants.MSG_UPDATE_UI)
         }
     }
@@ -93,7 +102,7 @@ class AlbumPhotosFragment : FacebookFragment(), ICallback<Photo> {
         mAdapter = PhotosAdapter()
         mAdapter?.mItemClickListener = mPhotoClickListener
         mList?.adapter = mAdapter
-        mList?.layoutManager = StaggeredGridLayoutManager(Constants.SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL)
+        mList?.layoutManager = StaggeredGridLayoutManager(Constants.SPAN_COUNT_NORMAL, StaggeredGridLayoutManager.VERTICAL)
         mList?.addOnScrollListener(mScrollListener)
         return rootView ?: super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -108,17 +117,17 @@ class AlbumPhotosFragment : FacebookFragment(), ICallback<Photo> {
             Constants.MSG_UPDATE_UI -> {
                 updateUI()
             }
-            Constants.MSG_LOAD_NEXT -> {
+            Constants.MSG_LOADING -> {
                 showProgress()
             }
-            Constants.MSG_LOAD_NEXT_DONE -> {
+            Constants.MSG_LOADING_DONE -> {
                 hideProgress()
             }
         }
     }
 
     override fun onSuccess(isNext: Boolean, list: List<Photo>) {
-        mHandler?.sendEmptyMessage(Constants.MSG_LOAD_NEXT_DONE)
+        mHandler?.sendEmptyMessage(Constants.MSG_LOADING_DONE)
         mHandler?.sendEmptyMessage(Constants.MSG_UPDATE_UI)
     }
 
@@ -141,11 +150,11 @@ class AlbumPhotosFragment : FacebookFragment(), ICallback<Photo> {
     override fun executeRequest() {
         Log.d(TAG, "mAlbumId: " + mAlbumId)
         if (mAlbumId.isNotEmpty()) {
-            mHandler?.sendEmptyMessage(Constants.MSG_LOAD_NEXT)
+            mHandler?.sendEmptyMessage(Constants.MSG_LOADING)
             PhotosManager.getInstance()?.mCachedData?.clear()
             // request album list
             val parameters = Bundle()
-            parameters.putString("fields", "photos.limit(" + Constants.PHOTOS_PER_PAGE + "){name,link,id,picture,created_time,webp_images}")
+            parameters.putString("fields", "photos.limit(" + Constants.PHOTOS_PER_PAGE + "){name,link,id,picture,created_time,webp_images},name")
             mPhotosRequest = FacebookManager.createGraphPathRequest(parameters, mAlbumId, mPhotosCallback)
             mPhotosRequest?.executeAsync()
         }
@@ -162,5 +171,9 @@ class AlbumPhotosFragment : FacebookFragment(), ICallback<Photo> {
             mAlbumId = intent?.getStringExtra(Constants.EXTRA_ALBUM_ID) ?: ""
             executeRequest()
         }
+    }
+
+    override fun updateTitle() {
+        (activity as AppCompatActivity).supportActionBar?.title = PhotosManager.getInstance()?.mAlbumName
     }
 }

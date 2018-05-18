@@ -1,8 +1,9 @@
-package com.muheng.photoviewer.utils
+package com.muheng.photoviewer.manager
 
 import android.os.Handler
 import android.util.Log
 import com.muheng.facebook.Photo
+import com.muheng.photoviewer.utils.Constants
 import org.json.JSONObject
 
 class PhotosManager : PhotoManager<Photo>() {
@@ -23,6 +24,8 @@ class PhotosManager : PhotoManager<Photo>() {
             sInstanct = null
         }
     }
+
+    var mAlbumName : String? = null
 
     override fun parsingData(jsonObj: JSONObject?, handler : Handler?) : ArrayList<Photo> {
         var list = ArrayList<Photo> ()
@@ -67,6 +70,7 @@ class PhotosManager : PhotoManager<Photo>() {
                 sInstanct?.mNext = paging.getString(Constants.NEXT)
             } catch (e : Exception) {}
         }
+
 //
 //        var picThread = Thread(object: Runnable {
 //            override fun run() {

@@ -1,4 +1,4 @@
-package com.muheng.photoviewer
+package com.muheng.photoviewer.fragment
 
 import android.os.Bundle
 import android.os.Message
@@ -8,8 +8,9 @@ import android.view.GestureDetector.SimpleOnGestureListener
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.muheng.facebook.Photo
+import com.muheng.photoviewer.R
 import com.muheng.photoviewer.utils.Constants
-import com.muheng.photoviewer.utils.PhotosManager
+import com.muheng.photoviewer.manager.PhotosManager
 
 class PhotoFragment : FacebookFragment() {
     companion object {
@@ -85,17 +86,11 @@ class PhotoFragment : FacebookFragment() {
         return rootView
     }
 
-    override fun handleMessage(msg: Message?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun handleMessage(msg: Message?) { }
 
-    override fun showProgress(idx: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun showProgress(idx: Int) { }
 
-    override fun hideProgress(idx: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun hideProgress(idx: Int) { }
 
     override fun updateUI() {
         if (mPhotoId != null) {
@@ -104,16 +99,13 @@ class PhotoFragment : FacebookFragment() {
         }
     }
 
-    override fun executeRequest() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun executeRequest() { }
 
     override fun onBackPressed(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
     }
 
-    override fun onVisible() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun onVisible() { }
 
+    override fun updateTitle() { }
 }

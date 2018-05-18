@@ -1,4 +1,4 @@
-package com.muheng.photoviewer
+package com.muheng.photoviewer.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.muheng.facebook.Photo
-import com.muheng.photoviewer.utils.PhotosManager
+import com.muheng.photoviewer.R
+import com.muheng.photoviewer.manager.PhotosManager
 
 class PhotosAdapter : RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
 

@@ -14,6 +14,14 @@ import android.widget.Toast
 import com.facebook.*
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
+import com.muheng.photoviewer.fragment.AlbumListFragment
+import com.muheng.photoviewer.fragment.AlbumPageFragment
+import com.muheng.photoviewer.fragment.AlbumPhotosFragment
+import com.muheng.photoviewer.fragment.FacebookFragment
+import com.muheng.photoviewer.manager.AlbumManager
+import com.muheng.photoviewer.manager.AlbumPageManager
+import com.muheng.photoviewer.manager.FacebookManager
+import com.muheng.photoviewer.manager.PhotosManager
 import com.muheng.photoviewer.utils.*
 import org.json.JSONObject
 import java.util.*
@@ -46,6 +54,10 @@ class AlbumMainActivity : AppCompatActivity(), UIHandler.Companion.IUIHandler {
     }
 
     private var mFragIdx : Int = Constants.FRAG_ALBUM_LIST
+    // You can get different type of albums view by just changing first element
+    // AlbumListFragment: display albums as a scrollable list (scroll up & down to read more)
+    // AlbumPageFragment: display albums as a swipable page (swipe left & right to load other pages)
+    //var mFragments : Array<FacebookFragment?> = arrayOf(AlbumPageFragment(), AlbumPhotosFragment())
     var mFragments : Array<FacebookFragment?> = arrayOf(AlbumListFragment(), AlbumPhotosFragment())
     var mFragContainers : Array<ViewGroup?> = arrayOfNulls<ViewGroup>(2)
 
@@ -75,6 +87,9 @@ class AlbumMainActivity : AppCompatActivity(), UIHandler.Companion.IUIHandler {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        calculateLayoutDimensions()
+
         setContentView(R.layout.activity_album)
 
         mLoginContainer = findViewById(R.id.login_container)
@@ -89,16 +104,16 @@ class AlbumMainActivity : AppCompatActivity(), UIHandler.Companion.IUIHandler {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().
-                    add(R.id.fragment_container, mFragments[Constants.FRAG_ALBUM_LIST], AlbumPhotosFragment.TAG).commit()
+                    add(R.id.fragment_container, mFragments[Constants.FRAG_ALBUM_LIST], Constants.ALBUMS).commit()
 
             supportFragmentManager.beginTransaction().
-                    add(R.id.detail_fragment_container, mFragments[Constants.FRAG_ALBUM_PHOTOS], AlbumListFragment.TAG).commit()
+                    add(R.id.detail_fragment_container, mFragments[Constants.FRAG_ALBUM_PHOTOS], Constants.PHOTOS).commit()
             for (i in 0..mFragments.size.minus(1)) {
                 mFragments[i]?.retainInstance = true
             }
         } else {
-                mFragments[Constants.FRAG_ALBUM_LIST] = supportFragmentManager.findFragmentByTag(AlbumPhotosFragment.TAG) as FacebookFragment
-                mFragments[Constants.FRAG_ALBUM_PHOTOS] = supportFragmentManager.findFragmentByTag(AlbumListFragment.TAG) as FacebookFragment
+                mFragments[Constants.FRAG_ALBUM_LIST] = supportFragmentManager.findFragmentByTag(Constants.ALBUMS) as FacebookFragment
+                mFragments[Constants.FRAG_ALBUM_PHOTOS] = supportFragmentManager.findFragmentByTag(Constants.PHOTOS) as FacebookFragment
         }
 
         if (Constants.ACT_VIEW_ALBUM == intent?.action) {
@@ -136,6 +151,7 @@ class AlbumMainActivity : AppCompatActivity(), UIHandler.Companion.IUIHandler {
     override fun onDestroy() {
         FacebookManager.getInstance()?.mHandler = null
         AlbumManager.release()
+        AlbumPageManager.release()
         PhotosManager.release()
         super.onDestroy()
     }
@@ -192,10 +208,9 @@ class AlbumMainActivity : AppCompatActivity(), UIHandler.Companion.IUIHandler {
             Constants.FRAG_ALBUM_LIST -> {
                 mToolbar?.title = FacebookManager.getInstance()?.mMeProfile?.mName + "'s albums"
             }
-            Constants.FRAG_ALBUM_PHOTOS -> {
-                var albumId = (mFragments[Constants.FRAG_ALBUM_PHOTOS] as AlbumPhotosFragment).mAlbumId
-                mToolbar?.title = AlbumManager.getInstance()?.getData(albumId)?.mName
-            }
+//            Constants.FRAG_ALBUM_PHOTOS -> {
+//                mFragments[Constants.FRAG_ALBUM_PHOTOS]?.updateTitle()
+//            }
         }
     }
 
@@ -226,5 +241,22 @@ class AlbumMainActivity : AppCompatActivity(), UIHandler.Companion.IUIHandler {
         // Request login
         mMeProfileRequest = FacebookManager.createGraphRequest(parameters, mMeProfileCallback)
         mMeProfileRequest?.executeAsync()
+    }
+
+    private fun calculateLayoutDimensions() {
+        var screenWidthDp = DimenUtils.getScreenWidthDp()
+        val screenHeightDp = DimenUtils.getScreenHeightDp()
+        var statusBarHeightDp = (application as AlbumBrowserApp).getStatusBarHeightDp()
+        var toolBarHeightDp = (application as AlbumBrowserApp).getToolBarHeightDp()
+
+        RuntimeUtils.sSpanCount = when {
+            (screenWidthDp >= Constants.SW_XLARGE) -> Constants.SPAN_COUNT_XLARGE
+            (screenWidthDp >= Constants.SW_LARGE) -> Constants.SPAN_COUNT_LARGE
+            else -> Constants.SPAN_COUNT_NORMAL
+        }
+
+        var availableHeightDp = screenHeightDp - statusBarHeightDp - toolBarHeightDp - RuntimeUtils.ADDITIONAL_SPACE_DP
+        RuntimeUtils.sAlbumRowPerPage = availableHeightDp / (screenWidthDp / RuntimeUtils.sSpanCount)
+        RuntimeUtils.sAlbumHeightDp = availableHeightDp / RuntimeUtils.sAlbumRowPerPage
     }
 }

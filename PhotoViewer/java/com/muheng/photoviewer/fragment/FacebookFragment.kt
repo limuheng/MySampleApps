@@ -1,7 +1,7 @@
-package com.muheng.photoviewer
+package com.muheng.photoviewer.fragment
 
 import android.support.v4.app.Fragment
-import com.muheng.photoviewer.utils.FacebookManager
+import com.muheng.photoviewer.manager.FacebookManager
 import com.muheng.photoviewer.utils.UIHandler
 
 abstract class FacebookFragment : Fragment(), UIHandler.Companion.IUIHandler {
@@ -14,4 +14,5 @@ abstract class FacebookFragment : Fragment(), UIHandler.Companion.IUIHandler {
     abstract fun executeRequest()
     abstract fun onBackPressed() : Boolean
     abstract fun onVisible()
+    abstract fun updateTitle()
 }

@@ -1,11 +1,11 @@
-package com.muheng.photoviewer
+package com.muheng.photoviewer.fragment
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Message
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.OnScrollListener
-import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +16,14 @@ import android.widget.Toast
 import com.facebook.GraphRequest
 import com.facebook.GraphResponse
 import com.muheng.facebook.Album
-import com.muheng.photoviewer.utils.FacebookManager
-import com.muheng.photoviewer.utils.AlbumManager
+import com.muheng.photoviewer.R
+import com.muheng.photoviewer.adapter.AlbumsAdapter
+import com.muheng.photoviewer.manager.FacebookManager
+import com.muheng.photoviewer.manager.AlbumManager
 import com.muheng.photoviewer.utils.Constants
 import com.muheng.photoviewer.utils.UIHandler
-import com.muheng.photoviewer.utils.PhotoManager.ICallback
+import com.muheng.photoviewer.manager.PhotoManager.ICallback
+import com.muheng.photoviewer.utils.RuntimeUtils
 import org.json.JSONObject
 
 class AlbumListFragment : FacebookFragment(), ICallback<Album> {
@@ -54,14 +57,15 @@ class AlbumListFragment : FacebookFragment(), ICallback<Album> {
     private var mScrollListener : OnScrollListener = object : OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
-            var spanCount = (recyclerView?.layoutManager as StaggeredGridLayoutManager).spanCount
-            //Log.d(TAG, "spanCount: " + spanCount)
-            var lastVisibleItemPos = IntArray(spanCount)
-            (recyclerView.layoutManager as StaggeredGridLayoutManager).findLastCompletelyVisibleItemPositions(lastVisibleItemPos)
-            var lastVisibleItem = Math.max(lastVisibleItemPos[spanCount - 2], lastVisibleItemPos[spanCount - 1]);
+// For StaggeredGridLayoutManager
+//            var spanCount = (recyclerView?.layoutManager as GridLayoutManager).spanCount
+//            var lastVisibleItemPos = IntArray(spanCount)
+//            (recyclerView.layoutManager as StaggeredGridLayoutManager).findLastCompletelyVisibleItemPositions(lastVisibleItemPos)
+//            var lastVisibleItem = Math.max(lastVisibleItemPos[spanCount - 2], lastVisibleItemPos[spanCount - 1]);
             //Log.d(TAG, "lastVisibleItem: " + lastVisibleItem + ", mAdapter.itemCount: " + mAdapter?.itemCount)
 
-            if (lastVisibleItem == mAdapter?.itemCount?.minus(1) && mAdapter?.itemCount != 0) {
+            var lastVisibleItemPos = (recyclerView?.layoutManager as GridLayoutManager).findLastCompletelyVisibleItemPosition()
+            if (lastVisibleItemPos == mAdapter?.itemCount?.minus(1) && mAdapter?.itemCount != 0) {
                 AlbumManager.getInstance()?.loadNext(this@AlbumListFragment, mHandler)
             }
         }
@@ -100,7 +104,7 @@ class AlbumListFragment : FacebookFragment(), ICallback<Album> {
         mAdapter = AlbumsAdapter()
         mAdapter?.mItemClickListener = mAlbumClickListener
         mList?.adapter = mAdapter
-        mList?.layoutManager = StaggeredGridLayoutManager(Constants.SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL)
+        mList?.layoutManager = GridLayoutManager(activity, RuntimeUtils.sSpanCount)
         mList?.addOnScrollListener(mScrollListener)
 // Add horizontal divider between items
 //        var itemDecorator = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
@@ -126,17 +130,17 @@ class AlbumListFragment : FacebookFragment(), ICallback<Album> {
             Constants.MSG_UPDATE_UI -> {
                 updateUI()
             }
-            Constants.MSG_LOAD_NEXT -> {
+            Constants.MSG_LOADING -> {
                 showProgress(LOAD_NEXT)
             }
-            Constants.MSG_LOAD_NEXT_DONE -> {
+            Constants.MSG_LOADING_DONE -> {
                 hideProgress(LOAD_NEXT)
             }
         }
     }
 
     override fun onSuccess(isNext : Boolean, list : List<Album>) {
-        mHandler?.sendEmptyMessage(Constants.MSG_LOAD_NEXT_DONE)
+        mHandler?.sendEmptyMessage(Constants.MSG_LOADING_DONE)
         mHandler?.sendEmptyMessage(Constants.MSG_UPDATE_UI)
     }
 
@@ -176,4 +180,6 @@ class AlbumListFragment : FacebookFragment(), ICallback<Album> {
     override fun onVisible() {
         // Do nothing
     }
+
+    override fun updateTitle() { }
 }

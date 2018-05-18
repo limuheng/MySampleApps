@@ -1,8 +1,8 @@
-package com.muheng.photoviewer.utils
+package com.muheng.photoviewer.manager
 
 import android.os.Handler
-import android.util.Log
 import com.hank.hellonews.okhttp.OkHttpUtils
+import com.muheng.photoviewer.utils.Constants
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
@@ -45,13 +45,17 @@ abstract class PhotoManager<T> {
         return (!mNext.isEmpty())
     }
 
-    fun loadNext(callback: ICallback<T>?, handler : Handler?) {
+    protected fun hasPrev() : Boolean {
+        return (!mPrev.isEmpty())
+    }
+
+    open fun loadNext(callback: ICallback<T>?, handler : Handler?) {
         //Log.d("PhotoManager", "loadNext, mNext: " + mNext)
         //Log.d("PhotoManager", "loadNext, mLoadingUrl: " + mLoadingUrl)
         if (hasNext() && !mLoadingUrl.equals(mNext)) {
             // To disable item clicker listener
             mLoading = true
-            handler?.sendEmptyMessage(Constants.MSG_LOAD_NEXT)
+            handler?.sendEmptyMessage(Constants.MSG_LOADING)
             mLoadingUrl = mNext
 
             var httpCallback : Callback = object : Callback {
@@ -74,13 +78,15 @@ abstract class PhotoManager<T> {
         }
     }
 
+    open fun loadPrev(callback: ICallback<T>?, handler : Handler?) { }
+
     abstract fun parsingData(jsonObj: JSONObject?, handler : Handler?) : ArrayList<T>
 
     abstract fun getData(id : String) : T?
 
-    abstract fun calibrateCurrIdx(id : String?)
-    abstract fun getNextData() : T?
-    abstract fun getPrevData() : T?
-    abstract fun goNextData() : T?
-    abstract fun goPrevData() : T?
+    open fun calibrateCurrIdx(id : String?) {}
+    open fun getNextData() : T? { return null }
+    open fun getPrevData() : T? { return null }
+    open fun goNextData() : T? { return null }
+    open fun goPrevData() : T? { return null }
 }

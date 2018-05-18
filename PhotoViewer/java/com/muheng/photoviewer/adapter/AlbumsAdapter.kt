@@ -1,15 +1,15 @@
-package com.muheng.photoviewer
+package com.muheng.photoviewer.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.view.LayoutInflater
 import com.bumptech.glide.Glide
 import com.muheng.facebook.Album
-import com.muheng.photoviewer.utils.AlbumManager
+import com.muheng.photoviewer.R
+import com.muheng.photoviewer.manager.AlbumManager
 
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.ViewHolder>() {
@@ -38,12 +38,6 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.ViewHolder>() {
 
         // Return a new holder instance
         return ViewHolder(root)
-    }
-
-    private fun inflateAlbumView(inflater : LayoutInflater) : View? {
-        var view = inflater.inflate(R.layout.layout_album, null)
-        view?.layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f)
-        return view
     }
 
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {

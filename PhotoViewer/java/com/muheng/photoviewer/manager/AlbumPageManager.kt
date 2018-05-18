@@ -1,21 +1,21 @@
-package com.muheng.photoviewer.utils
+package com.muheng.photoviewer.manager
 
-import android.net.Uri
 import android.os.Handler
+import android.util.Log
 import com.muheng.facebook.Album
 import com.muheng.facebook.Photo
+import com.muheng.photoviewer.utils.Constants
 import org.json.JSONObject
 
-class AlbumManager : PhotoManager<Album>() {
-
+class AlbumPageManager : PageManager<Album>() {
     companion object {
-        val TAG : String = "AlbumManager"
+        val TAG : String = "AlbumPageManager"
 
-        private var sInstanct: AlbumManager? = null
+        private var sInstanct: AlbumPageManager? = null
 
-        fun getInstance(): AlbumManager? {
+        fun getInstance(): AlbumPageManager? {
             if (sInstanct == null) {
-                sInstanct = AlbumManager()
+                sInstanct = AlbumPageManager()
             }
             return sInstanct
         }
@@ -25,10 +25,10 @@ class AlbumManager : PhotoManager<Album>() {
         }
     }
 
-    override fun parsingData(jsonObj: JSONObject?, handler : Handler?) : ArrayList<Album> {
+    override fun parsingData(jsonObj: JSONObject?, handler: Handler?): ArrayList<Album> {
         var list = ArrayList<Album> ()
 
-        //Log.d(TAG, jsonObj?.toString())
+        Log.d(TAG, jsonObj?.toString())
         var albumsArray = jsonObj?.getJSONArray(Constants.DATA)
         if (albumsArray != null) {
             list.clear()
@@ -70,52 +70,15 @@ class AlbumManager : PhotoManager<Album>() {
                 sInstanct?.mNext = paging.getString(Constants.NEXT)
             }
         }
-
-//        var thread = Thread(object: Runnable {
-//            override fun run() {
-//                var size = list.size
-//                for (i in 0..size.minus(1)) {
-//                    var album = list.get(i)
-//
-//                    var pictureUrl = album.mCoverPhoto?.mPicture
-//                    var pictureFile = DownloadUtils.downloadPhoto(FacebookManager.extractFBPhotoName(pictureUrl), pictureUrl)
-//                    album.mCoverPhoto?.mPictureCache = Uri.parse(pictureFile)
-//
-//                    handler?.sendEmptyMessage(Constants.MSG_UPDATE_UI)
-//                }
-//            }
-//        })
-//        thread.start()
-
         return list
     }
 
-    override fun getData(id : String) : Album? {
+    override fun getData(id: String): Album? {
         for (album in mCachedData) {
             if (id == album.mId) {
                 return album
             }
         }
         return null
-    }
-
-    override fun calibrateCurrIdx(id: String?) {
-        TODO("not implemented")
-    }
-
-    override fun getNextData(): Album? {
-        TODO("not implemented")
-    }
-
-    override fun getPrevData(): Album? {
-        TODO("not implemented")
-    }
-
-    override fun goNextData(): Album? {
-        TODO("not implemented")
-    }
-
-    override fun goPrevData(): Album? {
-        TODO("not implemented")
     }
 }
