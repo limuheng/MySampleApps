@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Photo Viewer</string>
+    <string name="app_name">Foto Grab</string>
 
     <string name="login_message">請登入 Facebook 帳號以繼續...</string>
     <string name="log_out">登出</string>

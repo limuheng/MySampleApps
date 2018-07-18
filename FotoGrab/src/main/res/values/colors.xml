@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/md_blue_A400</color> <!-- #3F51B5 -->
-    <color name="colorPrimaryDark">@color/md_blue_800</color> <!-- #303F9F -->
+    <color name="colorPrimary">#FDD100</color> <!-- @color/md_blue_A400 -->
+    <color name="colorPrimaryDark">#972848</color> <!-- @color/md_blue_800 -->
     <color name="colorAccent">@color/colorPrimary</color>
     <color name="windowBackGround">@color/white</color>
     <color name="windowBackGroundDark">@color/colorPrimary</color>

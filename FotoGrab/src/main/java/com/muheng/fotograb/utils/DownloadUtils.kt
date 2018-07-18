@@ -14,7 +14,7 @@ class DownloadUtils {
 
         var sCachedFilesDir: File? = null
 
-        const val PHOTO_VIEWER_DIR = "PhotoViewerDownload"
+        const val FOTO_GRAB_DIR = "FotoGrabDownload"
         var sDownloadFilesDir: File? = null
 
         fun extractPhotoName(url: String?): String? {
@@ -31,7 +31,7 @@ class DownloadUtils {
             }
             var response = OkHttpUtils.requestSyncGet(url)
             if (response.isSuccessful) {
-                var photoCacheDir = File(sDownloadFilesDir, PHOTO_VIEWER_DIR)
+                var photoCacheDir = File(sDownloadFilesDir, FOTO_GRAB_DIR)
                 if (!photoCacheDir.exists()) {
                     if (photoCacheDir.mkdir()) {
                         return fullFileName
