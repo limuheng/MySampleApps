@@ -13,7 +13,7 @@ import com.muheng.photoviewer.utils.Constants
 /**
  * Created by Muheng Li on 2018/7/9.
  */
-class PhotosFragment : PageFragment<Photo>(), IPageView<Photo> {
+class PhotosFragment : PageFragment<Photo>() {
 
     companion object {
         const val TAG = "PhotosFragment"

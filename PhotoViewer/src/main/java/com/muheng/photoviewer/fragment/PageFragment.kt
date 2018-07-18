@@ -1,5 +1,6 @@
 package com.muheng.photoviewer.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
@@ -14,15 +15,17 @@ import android.widget.Toast
 import com.muheng.facebook.Page
 import com.muheng.photoviewer.R
 import com.muheng.photoviewer.adapter.PageAdapter
+import com.muheng.photoviewer.presenter.IConfigChanged
 import com.muheng.photoviewer.presenter.IPageView
 import com.muheng.photoviewer.presenter.PagePresenter
 import com.muheng.photoviewer.utils.Constants
 import com.muheng.photoviewer.utils.NetworkCheckUtils
+import com.muheng.photoviewer.utils.SpanCountUtils
 
 /**
  * Created by Muheng Li on 2018/7/13.
  */
-abstract class PageFragment<T>() : Fragment(), IPageView<T> {
+abstract class PageFragment<T>() : Fragment(), IPageView<T>, IConfigChanged {
 
     companion object {
         const val TAG = "PageFragment"
@@ -35,7 +38,7 @@ abstract class PageFragment<T>() : Fragment(), IPageView<T> {
     protected open var mScrollListener: RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
-            var spanCount = Constants.SPAN_COUNT_NORMAL
+            var spanCount = (recyclerView?.layoutManager as StaggeredGridLayoutManager).spanCount
             // Check if scroll to the bottom of the list
             var lastVisiblePositions = IntArray(spanCount)
             (recyclerView?.layoutManager as StaggeredGridLayoutManager).findLastCompletelyVisibleItemPositions(lastVisiblePositions)
@@ -104,12 +107,17 @@ abstract class PageFragment<T>() : Fragment(), IPageView<T> {
         mNoData = rootView?.findViewById(R.id.no_data)
 
         mList?.adapter = mAdapter
-        mList?.layoutManager = StaggeredGridLayoutManager(Constants.SPAN_COUNT_NORMAL, StaggeredGridLayoutManager.VERTICAL)
+        mList?.layoutManager = StaggeredGridLayoutManager(SpanCountUtils.getSpanCount(), StaggeredGridLayoutManager.VERTICAL)
         //GridLayoutManager(context, Constants.SPAN_COUNT_NORMAL)
-        (mList?.layoutManager as StaggeredGridLayoutManager).setGapStrategy(GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS)
+        (mList?.layoutManager as StaggeredGridLayoutManager).gapStrategy = GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
         mList?.addOnScrollListener(mScrollListener)
 
         return rootView
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        onConfigChanged()
     }
 
     // Ref: https://stackoverflow.com/questions/34028492/finding-top-offset-of-first-visible-item-in-a-recyclerview
@@ -141,7 +149,7 @@ abstract class PageFragment<T>() : Fragment(), IPageView<T> {
                     itemCountPerPage, (mAdapter.itemCount - itemCountPerPage))
 
             // Calculate position of the visible item
-            var spanCount = Constants.SPAN_COUNT_NORMAL
+            var spanCount = (mList?.layoutManager as StaggeredGridLayoutManager).spanCount
             var firstVisiblePositions = IntArray(spanCount)
             (mList?.layoutManager as StaggeredGridLayoutManager).findFirstVisibleItemPositions(firstVisiblePositions)
             var firstPos = Math.min(firstVisiblePositions[spanCount - 2], firstVisiblePositions[spanCount - 1])
@@ -168,7 +176,7 @@ abstract class PageFragment<T>() : Fragment(), IPageView<T> {
         mAdapter.notifyDataSetChanged()
 
         // Calculate position of the visible item
-        var spanCount = Constants.SPAN_COUNT_NORMAL
+        var spanCount = (mList?.layoutManager as StaggeredGridLayoutManager).spanCount
         var firstVisiblePositions = IntArray(spanCount)
         (mList?.layoutManager as StaggeredGridLayoutManager).findFirstVisibleItemPositions(firstVisiblePositions)
         var firstPos = Math.min(firstVisiblePositions[spanCount - 2], firstVisiblePositions[spanCount - 1])
@@ -178,5 +186,9 @@ abstract class PageFragment<T>() : Fragment(), IPageView<T> {
         // Using addition because we inserted a page at the beginning
         (mList?.layoutManager as StaggeredGridLayoutManager).scrollToPositionWithOffset(
                 firstPos + itemCountPerPage, v?.top ?: 0)
+    }
+
+    override fun onConfigChanged() {
+        SpanCountUtils.calculateSpanCount()
     }
 }

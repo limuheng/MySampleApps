@@ -8,6 +8,7 @@ import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.muheng.jni.JniAdMob
+import com.muheng.photoviewer.utils.Constants
 import com.muheng.photoviewer.utils.DimenUtils
 
 class PhotoViewerApp : Application() {
@@ -29,6 +30,7 @@ class PhotoViewerApp : Application() {
         DownloadUtils.sDownloadFilesDir =
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
 
+        // Initialize google admob
         mJniAdMob = JniAdMob()
         MobileAds.initialize(this, mJniAdMob.getAppId()) // resources.getString(R.string.test_admob_app_id
     }
@@ -52,21 +54,21 @@ class PhotoViewerApp : Application() {
         return adView
     }
 
-    fun getStatusBarHeightDp(): Int {
-        var resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android")
-        var statusBarHeight: Int = 0
-        if (resourceId > 0) {
-            statusBarHeight = resources.getDimensionPixelSize(resourceId)
-        }
-        return DimenUtils.pxToDp(statusBarHeight)
-    }
-
-    fun getToolBarHeightDp(): Int {
-        val styledAttributes = theme.obtainStyledAttributes(
-                intArrayOf(android.R.attr.actionBarSize)
-        )
-        var actionBarHeight = styledAttributes.getDimension(0, 0f).toInt()
-        styledAttributes.recycle()
-        return DimenUtils.pxToDp(actionBarHeight)
-    }
+//    fun getStatusBarHeightDp(): Int {
+//        var resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android")
+//        var statusBarHeight: Int = 0
+//        if (resourceId > 0) {
+//            statusBarHeight = resources.getDimensionPixelSize(resourceId)
+//        }
+//        return DimenUtils.pxToDp(statusBarHeight)
+//    }
+//
+//    fun getToolBarHeightDp(): Int {
+//        val styledAttributes = theme.obtainStyledAttributes(
+//                intArrayOf(android.R.attr.actionBarSize)
+//        )
+//        var actionBarHeight = styledAttributes.getDimension(0, 0f).toInt()
+//        styledAttributes.recycle()
+//        return DimenUtils.pxToDp(actionBarHeight)
+//    }
 }

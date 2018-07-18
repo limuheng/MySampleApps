@@ -1,12 +1,18 @@
 package com.muheng.photoviewer.utils
 
 class Constants {
+
     companion object {
 
-        const val ACT_VIEW_ALBUM = "com.muheng.simplegallery.VIEW_ALBUM"
-        const val ACT_VIEW_PHOTO = "com.muheng.simplegallery.VIEW_PHOTO"
+        // Extra key for intent fields
+        const val EXTRA_ID = "extra_id"
+        const val EXTRA_NAME = "extra_name"
+        const val EXTRA_PHOTO = "extra_photo"
 
+        // Span count used for item counts of a row
         const val SPAN_COUNT_NORMAL: Int = 2
+        const val SPAN_COUNT_LARGE: Int = 5
+        const val SPAN_COUNT_XLARGE: Int = 8
 
         /**
          *  xlarge screens are at least 960dp x 720dp
@@ -19,11 +25,12 @@ class Constants {
         val SW_LARGE = 640
         val SW_XLARGE = 960
 
-        const val FIELDS = "fields"
-
+        // FB User permissions
         const val PUBLIC_PROFILE = "public_profile"
         const val USER_PHOTOS = "user_photos"
 
+        // FB Request field constants
+        const val FIELDS = "fields"
         const val ID: String = "id"
         const val NAME: String = "name"
         const val SOURCE: String = "source"
@@ -38,12 +45,6 @@ class Constants {
         const val PHOTOS: String = "photos"
         const val WEB_IMAGES: String = "webp_images"
         const val IMAGES: String = "images"
-
-        const val EXTRA_ID = "extra_id"
-        const val EXTRA_NAME = "extra_name"
-        const val EXTRA_PHOTO = "extra_photo"
-
-        const val ZERO_F = 0.0f
-        const val SWIPE_THRESHOLD: Float = 300.0f
     }
+
 }

@@ -14,7 +14,7 @@ import com.muheng.photoviewer.utils.Constants
 /**
  * Created by Muheng Li on 2018/7/9.
  */
-class AlbumsFragment : PageFragment<Album>(), IPageView<Album> {
+class AlbumsFragment : PageFragment<Album>() {
 
     companion object {
         const val TAG = "AlbumsFragment"
