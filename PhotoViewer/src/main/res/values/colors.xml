@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/md_blue_A400</color> <!-- #3F51B5 -->
+    <color name="colorPrimaryDark">@color/md_blue_800</color> <!-- #303F9F -->
+    <color name="colorAccent">@color/colorPrimary</color>
+    <color name="windowBackGround">@color/white</color>
+    <color name="windowBackGroundDark">@color/colorPrimary</color>
+    <!--<color name="cardview_bg_color">@color/lightgray</color>-->
+</resources>

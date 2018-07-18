@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Photo Viewer</string>
+
+    <string name="login_message">Please login your facebook account to continue...</string>
+    <string name="log_out">Sign out</string>
+
+    <string name="network_unavailable_message">Network is unavailable, please connect to newwork and try again...</string>
+    <string name="retry">Retry</string>
+
+    <string name="no_data">There are no data</string>
+
+    <string name="title_albums">\'s Albums</string>
+    <string name="title_share_link">Share link</string>
+    <string name="msg_download_started">Download started!</string>
+    <string name="msg_download_completed">Download finished!\n</string>
+    <string name="msg_download_failed">Download failed!\nPlease try again</string>
+    <string name="msg_unable_to_share">Unable to share</string>
+    <string name="msg_operation_cancel">Operation was canceld due to permission denied</string>
+
+    <!-- No multilanguage -->
+    <string name="file_extension_jpg">.jpg</string>
+
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <integer name="toolbar_title_lines">1</integer>
+    <integer name="album_title_lines">2</integer>
+</resources>

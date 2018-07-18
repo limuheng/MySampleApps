@@ -1,0 +1,6 @@
+<resources>
+    <!-- admob app id for testing -->
+    <string name="test_admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <!-- ad unit id for testing -->
+    <string name="test_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+</resources>

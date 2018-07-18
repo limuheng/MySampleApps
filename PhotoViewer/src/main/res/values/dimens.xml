@@ -1,0 +1,24 @@
+<resources>
+    <dimen name="title_vertical_margin">6dp</dimen>
+    <dimen name="text_padding">3dp</dimen>
+    <dimen name="login_btn_padding">30dp</dimen>
+    <dimen name="photo_size">100dp</dimen>
+    <dimen name="list_margin">6dp</dimen>
+    <dimen name="list_divider_height">5dp</dimen>
+
+    <dimen name="recyclerview_margin">3dp</dimen>
+    <dimen name="cardview_corner_radius">3dp</dimen>
+    <dimen name="cardview_card_elevation">3dp</dimen>
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="toolbar_content_inset">5dp</dimen>
+
+    <dimen name="primary_text_size">20sp</dimen>
+    <dimen name="secondary_text_size">12sp</dimen>
+    <dimen name="menu_text_size">14sp</dimen>
+
+    <!-- FOR TEST -->
+    <dimen name="picture_padding">3dp</dimen>
+    <dimen name="picture_size">60dp</dimen>
+    <dimen name="picture_margin">30dp</dimen>
+</resources>
