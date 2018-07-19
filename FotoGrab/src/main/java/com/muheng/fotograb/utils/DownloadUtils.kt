@@ -33,7 +33,7 @@ class DownloadUtils {
             if (response.isSuccessful) {
                 var photoCacheDir = File(sDownloadFilesDir, FOTO_GRAB_DIR)
                 if (!photoCacheDir.exists()) {
-                    if (photoCacheDir.mkdir()) {
+                    if (!photoCacheDir.mkdir()) {
                         return fullFileName
                     }
                 }

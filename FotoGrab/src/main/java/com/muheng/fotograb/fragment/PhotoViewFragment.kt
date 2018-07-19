@@ -138,7 +138,7 @@ class PhotoViewFragment : Fragment(), IPhotoView {
     }
 
     override fun onSaveFailed(msg: String?) {
-        Log.d(TAG, "onSaveFailed:$msg")
+        Log.d(TAG, "SaveFailed:$msg")
         var simpleMsg = resources.getString(R.string.msg_download_failed)
         var error = if (msg != null) simpleMsg + ":\n$msg" else simpleMsg
         Toast.makeText(activity, error, Toast.LENGTH_SHORT).show()
@@ -189,7 +189,7 @@ class PhotoViewFragment : Fragment(), IPhotoView {
     }
 
     private fun savePhoto() {
-        Toast.makeText(context, "Save photo: ${mPhoto.id}", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, "Save photo: ${mPhoto.id}", Toast.LENGTH_SHORT).show()
         if (mPhoto.images.isNotEmpty()) {
             mPresenter.save(mPhoto.images[0].source)
         } else {
