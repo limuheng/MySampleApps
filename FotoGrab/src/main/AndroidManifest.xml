@@ -42,7 +42,8 @@
         </activity>
         <!-- For Facebook SDK -->
 
-        <activity android:name="com.muheng.login.LoginActivity">
+        <activity android:name="com.muheng.login.LoginActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,9 +52,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity" />
-        <activity android:name=".PhotosActivity" />
-        <activity android:name=".PhotoViewActivity" />
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".PhotosActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".PhotoViewActivity"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>
