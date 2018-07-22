@@ -12,7 +12,7 @@
     <string name="title_albums">\'s Albums</string>
     <string name="title_share_link">Share link</string>
     <string name="msg_download_started">Download started!</string>
-    <string name="msg_download_completed">Download finished!\n</string>
+    <string name="msg_download_completed">Photo saved!\n</string>
     <string name="msg_download_failed">Download failed!\nPlease try again</string>
     <string name="msg_unable_to_share">Unable to share</string>
     <string name="msg_operation_cancel">Operation was canceld due to permission denied</string>

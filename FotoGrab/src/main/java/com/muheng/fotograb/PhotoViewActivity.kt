@@ -1,9 +1,12 @@
 package com.muheng.fotograb
 
 import android.os.Bundle
+import android.view.MotionEvent
 import com.muheng.common.ToolbarActivity
 import com.muheng.fotograb.fragment.PhotoViewFragment
 import com.muheng.fotograb.utils.Constants
+import com.muheng.rxjava.Event
+import com.muheng.rxjava.RxEventBus
 
 /**
  * Created by Muheng Li on 2018/7/14.
@@ -43,5 +46,4 @@ class PhotoViewActivity : ToolbarActivity() {
         super.onSaveInstanceState(outState)
         outState?.putString(Constants.EXTRA_NAME, mPhotoName)
     }
-
 }

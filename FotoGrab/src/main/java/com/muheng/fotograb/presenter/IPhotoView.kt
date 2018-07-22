@@ -12,4 +12,6 @@ interface IPhotoView {
     fun onSaveFailed(msg: String? = null)
     fun onPermissionGranted(permission: String)
     fun requestPermission()
+    fun onScale(scaleFactor: Float)
+    fun onMotionMove(dx: Float, dy: Float)
 }

@@ -1,5 +1,6 @@
 package com.muheng.rxjava
 
+import android.view.MotionEvent
 import com.muheng.facebook.Album
 import com.muheng.facebook.Photo
 
@@ -15,5 +16,8 @@ class Event {
     class DownloadCompleted(val path: String)
     class DownloadFailed(val msg: String? = null)
     class PermissionGranted(val permission: String)
+
+    class TouchEvent(val motionEvent: MotionEvent?)
+    class ScaleEvent(val scaleFactor: Float)
 
 }

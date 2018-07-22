@@ -12,7 +12,7 @@
     <string name="title_albums">的相簿</string>
     <string name="title_share_link">分享連結</string>
     <string name="msg_download_started">開始下載</string>
-    <string name="msg_download_completed">下載完成！\n</string>
+    <string name="msg_download_completed">相片已儲存！\n</string>
     <string name="msg_download_failed">下載失敗！\n請再嘗試重新下載</string>
     <string name="msg_unable_to_share">無法分享</string>
     <string name="msg_operation_cancel">權限被拒，操作已取消</string>

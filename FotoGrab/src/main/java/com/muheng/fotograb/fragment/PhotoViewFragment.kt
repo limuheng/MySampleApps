@@ -7,16 +7,14 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.muheng.facebook.Photo
 import com.muheng.fotograb.R
-import com.muheng.fotograb.presenter.AlbumsPresenter
 import com.muheng.fotograb.presenter.IPhotoView
 import com.muheng.fotograb.presenter.PhotoViewPresenter
 import com.muheng.fotograb.utils.Constants
@@ -25,6 +23,7 @@ import com.muheng.rxjava.RxEventBus
 import com.tbruyelle.rxpermissions2.Permission
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.functions.Consumer
+
 
 /**
  * Created by Muheng Li on 2018/7/14.
@@ -35,12 +34,10 @@ class PhotoViewFragment : Fragment(), IPhotoView {
         const val TAG = "PhotoViewFragment"
     }
 
-    private lateinit var mPhoto: Photo
-
     protected open lateinit var mPresenter: PhotoViewPresenter
 
-    private var mImageView: ImageView? = null
-    private var mNoData: TextView? = null
+    private lateinit var mImageView: ImageView
+    private lateinit var mNoData: TextView
     private var mFabs = Array<FloatingActionButton?>(PhotoViewPresenter.FAB_2.plus(1), { i -> null })
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,9 +48,9 @@ class PhotoViewFragment : Fragment(), IPhotoView {
         mPresenter.registerRxBus()
 
         if (savedInstanceState != null) {
-            mPhoto = savedInstanceState.getParcelable(Constants.EXTRA_PHOTO)
+            mPresenter.mPhoto = savedInstanceState.getParcelable(Constants.EXTRA_PHOTO)
         } else {
-            mPhoto = activity?.intent?.getParcelableExtra(Constants.EXTRA_PHOTO) ?: Photo()
+            mPresenter.mPhoto = activity?.intent?.getParcelableExtra(Constants.EXTRA_PHOTO) ?: Photo()
         }
     }
 
@@ -66,8 +63,10 @@ class PhotoViewFragment : Fragment(), IPhotoView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootView = inflater.inflate(R.layout.fragment_photo, container, false)
 
-        mImageView = rootView?.findViewById(R.id.photo)
-        mNoData = rootView?.findViewById(R.id.no_data)
+        mImageView = rootView.findViewById(R.id.photo)
+        mNoData = rootView.findViewById(R.id.no_data)
+
+        mImageView.setOnTouchListener(mPresenter.mTouchListener)
 
         mFabs[PhotoViewPresenter.FAB_MAIN] = rootView?.findViewById(R.id.fab_main)
         mFabs[PhotoViewPresenter.FAB_1] = rootView?.findViewById(R.id.fab_1)
@@ -85,16 +84,12 @@ class PhotoViewFragment : Fragment(), IPhotoView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (mPhoto.webp_images.isNotEmpty()) {
-            mPresenter.showPhoto(mPhoto.webp_images[0].source)
-        } else {
-            onNoData()
-        }
+        mPresenter.showPhoto()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelable(Constants.EXTRA_PHOTO, mPhoto)
+        outState.putParcelable(Constants.EXTRA_PHOTO, mPresenter.mPhoto)
     }
 
     override fun showPhoto(path: String) {
@@ -129,7 +124,7 @@ class PhotoViewFragment : Fragment(), IPhotoView {
     }
 
     override fun onNoData() {
-        mNoData?.visibility = View.VISIBLE
+        mNoData.visibility = View.VISIBLE
     }
 
     override fun onSaveSuccessfaul(path: String) {
@@ -181,20 +176,22 @@ class PhotoViewFragment : Fragment(), IPhotoView {
     }
 
     private fun sharePhoto() {
-        if (mPhoto.webp_images.isNotEmpty()) {
-            mPresenter.sharePhoto(mPhoto.name, mPhoto.webp_images[0].source)
-        } else {
+        if (!mPresenter.sharePhoto()) {
             Toast.makeText(activity, resources.getString(R.string.msg_unable_to_share), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun savePhoto() {
-        //Toast.makeText(context, "Save photo: ${mPhoto.id}", Toast.LENGTH_SHORT).show()
-        if (mPhoto.images.isNotEmpty()) {
-            mPresenter.save(mPhoto.images[0].source)
-        } else {
-            onSaveFailed()
-        }
+        mPresenter.save()
     }
 
+    override fun onScale(scaleFactor: Float) {
+        mImageView.scaleX = scaleFactor
+        mImageView.scaleY = scaleFactor
+    }
+
+    override fun onMotionMove(dx: Float, dy: Float) {
+        mImageView.x = mImageView.x.plus(dx)
+        mImageView.y = mImageView.y.plus(dy)
+    }
 }

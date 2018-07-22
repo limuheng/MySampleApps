@@ -44,7 +44,6 @@ class PhotosFragment : PageFragment<Photo>() {
     }
 
     override fun onItemClicked(item: Photo) {
-        //Toast.makeText(context, "Photo $id was clicked!", Toast.LENGTH_SHORT).show()
         var intent = Intent(context, PhotoViewActivity::class.java)
         intent.putExtra(Constants.EXTRA_PHOTO, item)
         startActivity(intent)
