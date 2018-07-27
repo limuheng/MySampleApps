@@ -5,8 +5,11 @@ import java.lang.ref.WeakReference
 /**
  * Created by limuh on 2018/7/6.
  */
-class FragmentsPresenter(private val view : WeakReference<IFragmentsHolder>) {
+class FragmentsPresenter(view: IFragmentsHolder) {
+
+    private var mView = WeakReference<IFragmentsHolder>(view)
+
     fun switch(from: Int, to: Int) {
-        view.get()?.switchFragment(from, to)
+        mView.get()?.switchFragment(from, to)
     }
 }

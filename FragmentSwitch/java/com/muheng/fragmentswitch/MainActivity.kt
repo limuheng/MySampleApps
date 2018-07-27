@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity(), IFragmentsHolder {
 
     private val KEY_FRAG_IDX = "KEY_FRAG_IDX"
 
-    private var mFragments: Array<MyFragment> = arrayOf(MyFragment(), MyFragment(), MyFragment())
-
     private var mDisplayIdx: Int = 0
 
     private lateinit var mPresenter: FragmentsPresenter
@@ -42,27 +40,16 @@ class MainActivity : AppCompatActivity(), IFragmentsHolder {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().add(
-                    R.id.fragment_container, mFragments[0]).commit()
-            mDisplayIdx = 0
+            addFragments()
         } else {
-            var idx = savedInstanceState.getInt(KEY_FRAG_IDX)
-            if (idx in 0 until mFragments.size) {
-                mDisplayIdx = idx
-            } else {
-                mDisplayIdx = 0
-            }
+            mDisplayIdx = savedInstanceState.getInt(KEY_FRAG_IDX)
         }
 
-        mPresenter = FragmentsPresenter(WeakReference<IFragmentsHolder>(this))
-    }
+        mPresenter = FragmentsPresenter(this)
 
-    override fun onPostResume() {
-        super.onPostResume()
-        initFragments()
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        Log.d("MainActivity", "fragments count: ${supportFragmentManager.fragments.size}")
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
@@ -73,11 +60,17 @@ class MainActivity : AppCompatActivity(), IFragmentsHolder {
     override fun switchFragment(from: Int, to: Int) {
         if (mDisplayIdx != to) {
             try {
+                var fragmentFrom = supportFragmentManager.findFragmentByTag("fragment${from}")
+                var fragmentTo = supportFragmentManager.findFragmentByTag("fragment${to}")
                 var transaction = supportFragmentManager.beginTransaction()
-                if (!mFragments[to].isAdded) {
-                    transaction.hide(mFragments[from]).add(R.id.fragment_container, mFragments[to]).commit()
+                if (fragmentTo == null) {
+                    var fragment = MyFragment()
+                    fragment.mId = to
+                    transaction.hide(fragmentFrom).add(R.id.fragment_container, fragment, to.toString()).commit()
+                } else if (!fragmentTo.isAdded) {
+                    transaction.hide(fragmentFrom).add(R.id.fragment_container, fragmentTo, to.toString()).commit()
                 } else {
-                    transaction.hide(mFragments[from]).show(mFragments[to]).commit()
+                    transaction.hide(fragmentFrom).show(fragmentTo).commit()
                 }
                 mDisplayIdx = to
             } catch (e: Exception) {
@@ -86,9 +79,27 @@ class MainActivity : AppCompatActivity(), IFragmentsHolder {
         }
     }
 
-    private fun initFragments() {
-        for (i in 0 until mFragments.size) {
-            mFragments[i].mId = i
-        }
+    private fun addFragments() {
+        var fragment1 = MyFragment()
+        fragment1.mId = 0
+        var fragment2 = MyFragment()
+        fragment2.mId = 1
+        var fragment3 = MyFragment()
+        fragment3.mId = 2
+
+        var transaction = supportFragmentManager.beginTransaction()
+
+        // Add first fragment
+        transaction.add(R.id.fragment_container, fragment1, "fragment${fragment1.mId}")
+        // Add second fragment
+        transaction.add(R.id.fragment_container, fragment2, "fragment${fragment2.mId}")
+        // Add third fragment
+        transaction.add(R.id.fragment_container, fragment3, "fragment${fragment3.mId}")
+
+        // show second fragment & hide second fragment
+        transaction.hide(fragment3).hide(fragment2).show(fragment1).commit()
+        Log.d("MainActivity", "[addFragments] fragment count: ${supportFragmentManager.fragments.size}")
+
+        mDisplayIdx = 0
     }
 }
