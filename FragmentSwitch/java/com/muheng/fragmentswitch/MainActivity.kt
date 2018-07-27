@@ -63,15 +63,7 @@ class MainActivity : AppCompatActivity(), IFragmentsHolder {
                 var fragmentFrom = supportFragmentManager.findFragmentByTag("fragment${from}")
                 var fragmentTo = supportFragmentManager.findFragmentByTag("fragment${to}")
                 var transaction = supportFragmentManager.beginTransaction()
-                if (fragmentTo == null) {
-                    var fragment = MyFragment()
-                    fragment.mId = to
-                    transaction.hide(fragmentFrom).add(R.id.fragment_container, fragment, to.toString()).commit()
-                } else if (!fragmentTo.isAdded) {
-                    transaction.hide(fragmentFrom).add(R.id.fragment_container, fragmentTo, to.toString()).commit()
-                } else {
-                    transaction.hide(fragmentFrom).show(fragmentTo).commit()
-                }
+                transaction.hide(fragmentFrom).show(fragmentTo).commit()
                 mDisplayIdx = to
             } catch (e: Exception) {
                 e.printStackTrace()
