@@ -1,0 +1,3 @@
+ninja: Entering directory `C:\Users\limuh\Documents\workspace\TestPrograms\MyJniTest\nativelibtest\.cxx\cmake\debug\x86'
+[1/2] Building C object CMakeFiles/NativeLibTest.dir/native_lib_test.c.o
+[2/2] Linking C shared library C:\Users\limuh\Documents\workspace\TestPrograms\MyJniTest\nativelibtest\build\intermediates\cmake\debug\obj\x86\libNativeLibTest.so

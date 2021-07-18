@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/.cxx/cmake/release/armeabi-v7a",
+  "command": "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\ndk\\22.1.7171670\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe --target=armv7-none-linux-androideabi24 --gcc-toolchain=C:/Users/limuh/Documents/programs/AndroidDev/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/limuh/Documents/programs/AndroidDev/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DNativeLibTest_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -Oz -DNDEBUG  -fPIC   -o CMakeFiles\\NativeLibTest.dir\\native_lib_test.c.o   -c C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\src\\main\\native\\native_lib_test.c",
+  "file": "C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\src\\main\\native\\native_lib_test.c"
+}
+]

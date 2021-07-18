@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/.cxx/cmake/release/x86",
+  "command": "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\ndk\\22.1.7171670\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe --target=i686-none-linux-android24 --gcc-toolchain=C:/Users/limuh/Documents/programs/AndroidDev/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/limuh/Documents/programs/AndroidDev/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DNativeLibTest_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\NativeLibTest.dir\\native_lib_test.c.o   -c C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\src\\main\\native\\native_lib_test.c",
+  "file": "C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\src\\main\\native\\native_lib_test.c"
+}
+]

@@ -1,0 +1,43 @@
+{
+  "stringTable": {
+    "0": "C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/.cxx/cmake/release/arm64-v8a",
+    "1": "--target=aarch64-none-linux-android24 --gcc-toolchain=C:/Users/limuh/Documents/programs/AndroidDev/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/limuh/Documents/programs/AndroidDev/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DNativeLibTest_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O2 -DNDEBUG -fPIC"
+  },
+  "buildFiles": [
+    "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\ndk\\22.1.7171670\\build\\cmake\\platforms.cmake",
+    "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\ndk\\22.1.7171670\\build\\cmake\\compiler_id.cmake",
+    "C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\src\\main\\native\\CMakeLists.txt",
+    "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\ndk\\22.1.7171670\\build\\cmake\\android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\.cxx\\cmake\\release\\arm64-v8a\" clean"
+  ],
+  "buildTargetsCommand": "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\.cxx\\cmake\\release\\arm64-v8a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "NativeLibTest-Release-arm64-v8a": {
+      "buildCommand": "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\.cxx\\cmake\\release\\arm64-v8a\" NativeLibTest",
+      "buildType": "release",
+      "toolchain": "778505439",
+      "abi": "arm64-v8a",
+      "artifactName": "NativeLibTest",
+      "files": [
+        {
+          "src": "C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\src\\main\\native\\native_lib_test.c",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a\\libNativeLibTest.so"
+    }
+  },
+  "toolchains": {
+    "778505439": {
+      "cCompilerExecutable": "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\ndk\\22.1.7171670\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": []
+}

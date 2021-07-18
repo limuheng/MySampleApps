@@ -1,0 +1,3 @@
+C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/.cxx/cmake/release/armeabi-v7a/CMakeFiles/NativeLibTest.dir
+C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/.cxx/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/.cxx/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir

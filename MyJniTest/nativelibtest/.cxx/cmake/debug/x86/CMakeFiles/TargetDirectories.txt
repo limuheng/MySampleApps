@@ -1,0 +1,3 @@
+C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/.cxx/cmake/debug/x86/CMakeFiles/NativeLibTest.dir
+C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\ndk\\22.1.7171670\\build\\cmake\\platforms.cmake",
+    "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\ndk\\22.1.7171670\\build\\cmake\\compiler_id.cmake",
+    "C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\src\\main\\native\\CMakeLists.txt",
+    "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\ndk\\22.1.7171670\\build\\cmake\\android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\.cxx\\cmake\\release\\x86\" clean"
+  ],
+  "buildTargetsCommand": "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\.cxx\\cmake\\release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "NativeLibTest-Release-x86": {
+      "artifactName": "NativeLibTest",
+      "buildCommand": "C:\\Users\\limuh\\Documents\\programs\\AndroidDev\\sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\.cxx\\cmake\\release\\x86\" NativeLibTest",
+      "abi": "x86",
+      "output": "C:\\Users\\limuh\\Documents\\workspace\\TestPrograms\\MyJniTest\\nativelibtest\\build\\intermediates\\cmake\\release\\obj\\x86\\libNativeLibTest.so"
+    }
+  }
+}

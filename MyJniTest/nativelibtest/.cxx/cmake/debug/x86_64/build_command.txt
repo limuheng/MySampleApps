@@ -1,0 +1,20 @@
+Executable : C:\Users\limuh\Documents\programs\AndroidDev\sdk\cmake\3.10.2.4988404\bin\cmake.exe
+arguments : 
+-HC:\Users\limuh\Documents\workspace\TestPrograms\MyJniTest\nativelibtest\src\main\native
+-DCMAKE_BUILD_TYPE=Debug
+-DCMAKE_TOOLCHAIN_FILE=C:\Users\limuh\Documents\programs\AndroidDev\sdk\ndk\22.1.7171670\build\cmake\android.toolchain.cmake
+-DANDROID_ABI=x86_64
+-DANDROID_NDK=C:\Users\limuh\Documents\programs\AndroidDev\sdk\ndk\22.1.7171670
+-DANDROID_PLATFORM=android-24
+-DCMAKE_ANDROID_ARCH_ABI=x86_64
+-DCMAKE_ANDROID_NDK=C:\Users\limuh\Documents\programs\AndroidDev\sdk\ndk\22.1.7171670
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\Users\limuh\Documents\workspace\TestPrograms\MyJniTest\nativelibtest\build\intermediates\cmake\debug\obj\x86_64
+-DCMAKE_MAKE_PROGRAM=C:\Users\limuh\Documents\programs\AndroidDev\sdk\cmake\3.10.2.4988404\bin\ninja.exe
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_SYSTEM_VERSION=24
+-BC:\Users\limuh\Documents\workspace\TestPrograms\MyJniTest\nativelibtest\.cxx\cmake\debug\x86_64
+-GNinja
+jvmArgs : 
+
+Build command args:

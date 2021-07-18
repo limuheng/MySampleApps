@@ -1,0 +1,5 @@
+# ninja log v5
+0	15	0	clean	d967c1f191ebc7a2
+0	11	0	clean	d967c1f191ebc7a2
+1	150	646431501	CMakeFiles/NativeLibTest.dir/native_lib_test.c.o	40c1ed059662a280
+150	1835	646431502	C:/Users/limuh/Documents/workspace/TestPrograms/MyJniTest/nativelibtest/build/intermediates/cmake/debug/obj/armeabi-v7a/libNativeLibTest.so	bd6caa599770c71
