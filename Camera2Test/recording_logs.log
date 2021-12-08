@@ -1,0 +1,94 @@
+2021-09-30 13:48:23.736 26368-26368/com.hank.camera2test D/Camera2Activity: isRecording: false
+2021-09-30 13:48:23.890 26368-26424/com.hank.camera2test D/CameraController: startRecording
+2021-09-30 13:48:23.893 26368-26524/com.hank.camera2test D/VideoRecorder: recording: /storage/4080-12FD/Android/data/com.hank.camera2test/files/Pictures/Camera2_2021_09_30_14_48_23.mp4
+2021-09-30 13:48:23.914 26368-26524/com.hank.camera2test D/VideoRecorder: Start recording...
+2021-09-30 13:48:24.535 26368-26465/com.hank.camera2test D/ACodec: dataspace changed to 0x10c10000 (R:2(Limited), P:1(BT709_5), M:1(BT709_5), T:3(SMPTE170M)) (R:2(Limited), S:1(BT709), T:3(SMPTE_170M))
+2021-09-30 13:48:24.549 26368-26524/com.hank.camera2test V/VideoRecorder: Output format change. API Level > 21 can ignore this.
+2021-09-30 13:48:24.551 26368-26524/com.hank.camera2test V/VideoRecorder: Adding video track {max-bitrate=3686400, csd-1=java.nio.HeapByteBuffer[pos=0 lim=9 cap=9], color-transfer=3, mime=video/avc, width=1280, bitrate=3686400, color-range=2, frame-rate=30, color-standard=1, height=960, csd-0=java.nio.HeapByteBuffer[pos=0 lim=22 cap=22]}
+2021-09-30 13:48:24.552 26368-26524/com.hank.camera2test V/VideoRecorder: MediaMuxer start
+2021-09-30 13:48:24.553 26368-26524/com.hank.camera2test I/MPEG4Writer: limits: 4294967295/0 bytes/us, bit rate: -1 bps and the estimated moov size 3191 bytes
+2021-09-30 13:48:24.554 26368-26526/com.hank.camera2test D/MPEG4Writer: Video skip non-key frame
+2021-09-30 13:48:24.565 26368-26526/com.hank.camera2test I/MPEG4Writer: setStartTimestampUs: 71423652931
+2021-09-30 13:48:24.565 26368-26526/com.hank.camera2test I/MPEG4Writer: Earliest track starting time: 71423652931
+2021-09-30 13:48:50.281 26368-26368/com.hank.camera2test D/Camera2Activity: isRecording: true
+2021-09-30 13:48:50.283 26368-26424/com.hank.camera2test D/CameraController: stopRecording: /storage/4080-12FD/Android/data/com.hank.camera2test/files/Pictures/Camera2_2021_09_30_14_48_23.mp4
+2021-09-30 13:48:50.284 26368-26424/com.hank.camera2test W/CameraCaptureSession: Session 0: abortCaptures - Session is already aborting; doing nothing
+2021-09-30 13:48:50.340 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track stopping. Stop source
+2021-09-30 13:48:50.340 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track source stopping
+2021-09-30 13:48:50.340 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track source stopped
+2021-09-30 13:48:50.340 26368-26526/com.hank.camera2test I/MPEG4Writer: Received total/0-length (354/0) buffers and encoded 353 frames. - Video
+2021-09-30 13:48:50.342 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track stopped. Stop source
+2021-09-30 13:48:50.342 26368-26524/com.hank.camera2test D/MPEG4Writer: Stopping writer thread
+2021-09-30 13:48:50.342 26368-26525/com.hank.camera2test D/MPEG4Writer: 0 chunks are written in the last batch
+2021-09-30 13:48:50.342 26368-26524/com.hank.camera2test D/MPEG4Writer: Writer thread stopped
+2021-09-30 13:48:50.342 26368-26524/com.hank.camera2test I/MPEG4Writer: Ajust the moov start time from 71423652931 us -> 71423652931 us
+2021-09-30 13:48:50.343 26368-26524/com.hank.camera2test I/MPEG4Writer: The mp4 file will not be streamable.
+2021-09-30 13:48:50.343 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track stopping. Stop source
+2021-09-30 13:48:50.363 26368-26524/com.hank.camera2test D/VideoRecorder: Stop recording...
+2021-09-30 13:48:50.365 26368-26465/com.hank.camera2test I/ExtendedACodec: setupVideoEncoder()
+2021-09-30 13:48:50.366 26368-26465/com.hank.camera2test W/OMXUtils: do not know color format 0x7fa30c04 = 2141391876
+2021-09-30 13:48:50.366 26368-26465/com.hank.camera2test W/OMXUtils: do not know color format 0x7f000789 = 2130708361
+2021-09-30 13:48:50.388 26368-26465/com.hank.camera2test I/ACodec: setupAVCEncoderParameters with [profile: High] [level: Level32]
+2021-09-30 13:48:50.393 26368-26465/com.hank.camera2test I/ACodec: [OMX.qcom.video.encoder.avc] cannot encode HDR static metadata. Ignoring.
+2021-09-30 13:48:50.393 26368-26465/com.hank.camera2test I/ACodec: setupVideoEncoder succeeded
+2021-09-30 13:48:50.393 26368-26465/com.hank.camera2test I/ExtendedACodec: [OMX.qcom.video.encoder.avc] configure, AMessage : AMessage(what = 'conf', target = 1) = {
+      int32_t color-format = 2130708361
+      float i-frame-interval = 1.000000
+      string mime = "video/avc"
+      int32_t width = 1280
+      int32_t bitrate = 3686400
+      float frame-rate = 30.000000
+      int32_t height = 960
+      int32_t encoder = 1
+    }
+2021-09-30 13:48:50.398 26368-26465/com.hank.camera2test W/OMXUtils: do not know color format 0x7f000789 = 2130708361
+2021-09-30 13:48:50.410 26368-26465/com.hank.camera2test W/ExtendedACodec: Failed to get extension for extradata parameter
+2021-09-30 13:49:04.127 26368-26368/com.hank.camera2test D/Camera2Activity: isRecording: false
+2021-09-30 13:49:04.130 26368-26424/com.hank.camera2test W/CameraCaptureSession: Session 0: abortCaptures - Session is already aborting; doing nothing
+2021-09-30 13:49:04.130 26368-26424/com.hank.camera2test D/CameraController: startRecording
+2021-09-30 13:49:04.131 26368-26524/com.hank.camera2test D/VideoRecorder: recording: /storage/4080-12FD/Android/data/com.hank.camera2test/files/Pictures/Camera2_2021_09_30_14_49_04.mp4
+2021-09-30 13:49:04.149 26368-26524/com.hank.camera2test D/VideoRecorder: Start recording...
+2021-09-30 13:49:04.188 26368-26465/com.hank.camera2test D/ACodec: dataspace changed to 0x10c10000 (R:2(Limited), P:1(BT709_5), M:1(BT709_5), T:3(SMPTE170M)) (R:2(Limited), S:1(BT709), T:3(SMPTE_170M))
+2021-09-30 13:49:04.200 26368-26524/com.hank.camera2test V/VideoRecorder: Output format change. API Level > 21 can ignore this.
+2021-09-30 13:49:04.202 26368-26524/com.hank.camera2test V/VideoRecorder: Adding video track {max-bitrate=3686400, csd-1=java.nio.HeapByteBuffer[pos=0 lim=9 cap=9], color-transfer=3, mime=video/avc, width=1280, bitrate=3686400, color-range=2, frame-rate=30, color-standard=1, height=960, csd-0=java.nio.HeapByteBuffer[pos=0 lim=22 cap=22]}
+2021-09-30 13:49:04.203 26368-26524/com.hank.camera2test V/VideoRecorder: MediaMuxer start
+2021-09-30 13:49:04.203 26368-26524/com.hank.camera2test I/MPEG4Writer: limits: 4294967295/0 bytes/us, bit rate: -1 bps and the estimated moov size 3191 bytes
+2021-09-30 13:49:04.205 26368-26533/com.hank.camera2test D/MPEG4Writer: Video skip non-key frame
+2021-09-30 13:49:04.236 26368-26533/com.hank.camera2test I/MPEG4Writer: setStartTimestampUs: 71449567435
+2021-09-30 13:49:04.236 26368-26533/com.hank.camera2test I/MPEG4Writer: Earliest track starting time: 71449567435
+2021-09-30 13:49:10.187 26368-26412/com.hank.camera2test D/IdleDetectorImpl: MSG_TIMER_TIMEOUT
+2021-09-30 13:49:10.187 26368-26412/com.hank.camera2test D/Activity: onIdleTimeout: send idle timeout broadcast
+2021-09-30 13:49:30.160 26368-26368/com.hank.camera2test D/Camera2Activity: isRecording: true
+2021-09-30 13:49:30.162 26368-26424/com.hank.camera2test D/CameraController: stopRecording: /storage/4080-12FD/Android/data/com.hank.camera2test/files/Pictures/Camera2_2021_09_30_14_49_04.mp4
+2021-09-30 13:49:30.163 26368-26424/com.hank.camera2test W/CameraCaptureSession: Session 0: abortCaptures - Session is already aborting; doing nothing
+2021-09-30 13:49:30.203 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track stopping. Stop source
+2021-09-30 13:49:30.203 26368-26533/com.hank.camera2test I/MPEG4Writer: Received total/0-length (355/0) buffers and encoded 354 frames. - Video
+2021-09-30 13:49:30.203 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track source stopping
+2021-09-30 13:49:30.203 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track source stopped
+2021-09-30 13:49:30.203 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track stopped. Stop source
+2021-09-30 13:49:30.203 26368-26524/com.hank.camera2test D/MPEG4Writer: Stopping writer thread
+2021-09-30 13:49:30.203 26368-26532/com.hank.camera2test D/MPEG4Writer: 0 chunks are written in the last batch
+2021-09-30 13:49:30.204 26368-26524/com.hank.camera2test D/MPEG4Writer: Writer thread stopped
+2021-09-30 13:49:30.204 26368-26524/com.hank.camera2test I/MPEG4Writer: Ajust the moov start time from 71449567435 us -> 71449567435 us
+2021-09-30 13:49:30.205 26368-26524/com.hank.camera2test I/MPEG4Writer: The mp4 file will not be streamable.
+2021-09-30 13:49:30.205 26368-26524/com.hank.camera2test D/MPEG4Writer: Video track stopping. Stop source
+2021-09-30 13:49:30.233 26368-26524/com.hank.camera2test D/VideoRecorder: Stop recording...
+2021-09-30 13:49:30.235 26368-26465/com.hank.camera2test I/ExtendedACodec: setupVideoEncoder()
+2021-09-30 13:49:30.236 26368-26465/com.hank.camera2test W/OMXUtils: do not know color format 0x7fa30c04 = 2141391876
+2021-09-30 13:49:30.236 26368-26465/com.hank.camera2test W/OMXUtils: do not know color format 0x7f000789 = 2130708361
+2021-09-30 13:49:30.251 26368-26465/com.hank.camera2test I/ACodec: setupAVCEncoderParameters with [profile: High] [level: Level32]
+2021-09-30 13:49:30.256 26368-26465/com.hank.camera2test I/ACodec: [OMX.qcom.video.encoder.avc] cannot encode HDR static metadata. Ignoring.
+2021-09-30 13:49:30.256 26368-26465/com.hank.camera2test I/ACodec: setupVideoEncoder succeeded
+2021-09-30 13:49:30.256 26368-26465/com.hank.camera2test I/ExtendedACodec: [OMX.qcom.video.encoder.avc] configure, AMessage : AMessage(what = 'conf', target = 1) = {
+      int32_t color-format = 2130708361
+      float i-frame-interval = 1.000000
+      string mime = "video/avc"
+      int32_t width = 1280
+      int32_t bitrate = 3686400
+      float frame-rate = 30.000000
+      int32_t height = 960
+      int32_t encoder = 1
+    }
+2021-09-30 13:49:30.262 26368-26465/com.hank.camera2test W/OMXUtils: do not know color format 0x7f000789 = 2130708361
+2021-09-30 13:49:30.274 26368-26465/com.hank.camera2test W/ExtendedACodec: Failed to get extension for extradata parameter
+

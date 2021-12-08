@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Camera2Test</string>
+    <string name="ev_display">EV: %s</string>
+</resources>
