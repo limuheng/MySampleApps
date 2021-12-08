@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent_color">#01000000</color>
+    <color name="black">#000000</color>         <!-- "black" -->
+    <color name="white">#FFFFFF</color>         <!-- "white" -->
+    <color name="darkWhite">#BBBBBBBB</color>   <!-- "dark white" -->
+    <color name="red">#FF0000</color>           <!-- red -->
+    <color name="mistyrose">#FFE4E1</color>      <!-- mistyrose -->
+    <color name="dark_mistyrose">#FFD4D1</color> <!-- dark mistyrose -->
+    <color name="ivory">#FFFFF0</color>          <!-- ivory-->
+    <color name="cornsilk">#FFF8DC</color>       <!-- cornsilk -->
+    <color name="dark_cornsilk">#FFF2D8</color>  <!-- dark cornsilk -->
+    <color name="darkgray">#A9A9A9</color>       <!-- darkgray -->
+    <color name="darkslateblue">#483D8B</color>  <!-- darkslateblue -->
+    <color name="teal">#008080</color>           <!-- teal -->
+    <color name="mediumspringgreen">#00FA9A</color> <!-- mediumspringgreen -->
+    <color name="lightslategray">#778899</color> <!-- lightslategray -->
+    <color name="powderblue">#B0E0E6</color>     <!-- powderblue -->
+    <color name="slateblue">#6A5ACD</color>      <!-- slateblue -->
+    <color name="firebrick">#B22222</color>      <!-- firebrick-->
+    <color name="lightgray">#D3D3D3</color>      <!-- lightgray -->
+    <color name="tomato">#FF6347</color>         <!-- tomato -->
+    <color name="seashell">#FFF5EE</color>       <!-- seashell -->
+    <color name="hotpink">#FF69B4</color>        <!-- hotpink -->
+    <color name="magenta">#FF00FF</color>        <!-- magenta -->
+    <color name="lawngreen">#7CFC00</color>      <!-- "lawngreen" -->
+    <color name="limegreen">#32CD32</color>      <!-- "limegreen" -->
+</resources>

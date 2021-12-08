@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FDD100</color> <!-- @color/md_blue_A400 -->
+    <color name="colorPrimaryDark">#972848</color> <!-- @color/md_blue_800 -->
+    <color name="colorAccent">@color/colorPrimary</color>
+
+    <color name="focus_indicator_color">@color/colorPrimary</color>
+</resources>
